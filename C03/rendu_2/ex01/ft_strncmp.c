@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/19 11:15:41 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/20 11:39:50 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
-#include <unistd.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 */
-int	ft_fibonacci(int index)
-{
-	int	fib[3];
-	int	i;
 
-	fib[0] = 0;
-	fib[1] = 1;
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	unsigned int	i;
+
+	if (n == 0)
+		return (0);
 	i = 0;
-	while (i < index - 2)
+	while ((i < n) && *s1 && (*s1 == *s2))
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
+		s1++;
+		s2++;
 		i++;
 	}
-	return (fib[1]);
+	if (i == n)
+		return (0);
+	return (*s1 - *s2);
 }
 /*
-int	main(int ac, char **av)
+int main ()
 {
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
-	return (0);
+	char *s1 = "rwerty";
+	char *s2 = "qwerty";
+	int	i;
+
+	i = ft_strncmp(s1, s2, 6);
+	printf("%d", i);
 }
 */

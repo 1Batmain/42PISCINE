@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/23 14:01:07 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/23 14:28:52 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
 #include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-*/
-int	ft_fibonacci(int index)
-{
-	int	fib[3];
-	int	i;
 
-	fib[0] = 0;
-	fib[1] = 1;
+void	ft_print(char *str)
+{
+	unsigned int	i;
+
 	i = 0;
-	while (i < index - 2)
+	while (str[i])
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
+		write(1, &str[i], 1);
 		i++;
 	}
-	return (fib[1]);
 }
-/*
-int	main(int ac, char **av)
+
+int	main(int argc, char **argv)
 {
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
+	unsigned int	i;
+
+	if (argc >= 1)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			ft_print(argv[argc - i]);
+			write(1, "\n", 1);
+			i++;
+		}
+	}
 	return (0);
 }
-*/

@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:29 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:49 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/24 10:53:16 by rarangur          #+#    #+#             */
+/*   Updated: 2024/08/24 14:26:10 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-/*
-*/
-int	ft_is_prime(int nb)
-{
-	int	i;
 
-	i = 2;
-	while (i < nb)
-	{
-		if (nb % i == 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-/*
-int	main(int ac, char **av)
+#include <unistd.h>
+
+void	print_result(int *grid)
 {
-	if (ac >= 1)
-		printf("%d", ft_is_prime(atoi(av[1])));
-	return (0);
+	int		i;
+	char	c;
+
+	i = 0;
+	while (i < (4 * 4))
+	{
+		c = '0' + grid[i];
+		write(1, &c, 1);
+		i++;
+		if (i % 4 == 0)
+			write(1, "\n", 1);
+		else
+			write(1, " ", 1);
+	}
+}
+
+/*
+int	main(void)
+{
+	int	test[] = {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4};
+	print_result(test);
 }
 */

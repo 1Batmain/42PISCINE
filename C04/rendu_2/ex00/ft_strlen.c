@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/19 17:47:31 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/19 17:47:38 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-*/
-int	ft_fibonacci(int index)
+int	ft_strlen(char *str)
 {
-	int	fib[3];
-	int	i;
+	int	len;
 
-	fib[0] = 0;
-	fib[1] = 1;
-	i = 0;
-	while (i < index - 2)
+	len = 0;
+	while (*(str + len))
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
-		i++;
+		len++;
 	}
-	return (fib[1]);
+	return (len);
 }
-/*
-int	main(int ac, char **av)
-{
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
-	return (0);
-}
-*/

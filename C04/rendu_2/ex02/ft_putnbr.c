@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/19 17:50:37 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/19 17:50:42 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-*/
-int	ft_fibonacci(int index)
+void	ft_rev_int_tab(int *tab, int size)
 {
-	int	fib[3];
-	int	i;
+	int	temp;
+	int	count;
 
-	fib[0] = 0;
-	fib[1] = 1;
-	i = 0;
-	while (i < index - 2)
+	count = 0;
+	while (count < size / 2)
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
-		i++;
+		temp = *(tab + count);
+		*(tab + count) = *(tab + (size - 1 - count));
+		*(tab + (size - 1 - count)) = temp;
+		count++;
 	}
-	return (fib[1]);
 }
-/*
-int	main(int ac, char **av)
-{
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
-	return (0);
-}
-*/

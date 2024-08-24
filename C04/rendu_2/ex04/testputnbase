@@ -1,0 +1,39 @@
+#include <unistd.h>
+#include <stdlib.h>
+/*
+#include <stdio.h>
+#include <limits.h>
+*/
+void	ft_print_number(int nbr, char *base, int base_len)
+{
+	if(nbr / base_len > 0)
+		ft_print_number(nbr / base_len, base, base_len);
+	write(1, &base[nbr % base_len], 1);
+}
+int	ft_len(char *base)
+{
+	int	i;
+
+	i = 0;
+	while (*base)
+	{
+		base++;
+		i++;
+	}
+	return (i);
+}
+void	ft_putnbr(int nbr, char *base)
+{
+	int	base_len;
+
+	base_len = ft_len(base);
+	ft_print_number(nbr, base, base_len);
+}
+int	main(int ac, char **av)
+{
+	ft_putnbr(atoi(av[1]), av[2]);
+	return (0);
+}
+/*
+*/
+

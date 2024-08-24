@@ -1,42 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   look.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/24 14:26:41 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/24 19:18:41 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
 #include <unistd.h>
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <limits.h>
 */
-int	ft_fibonacci(int index)
+int	look(int base, int *grid, int increment)
 {
-	int	fib[3];
 	int	i;
+	int	count;
+	int	min;
 
-	fib[0] = 0;
-	fib[1] = 1;
+	min = *grid;
+	count = 1;
 	i = 0;
-	while (i < index - 2)
+	while (i < 4)
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
+		if (*grid > min && *grid > *(grid - increment))
+			count++;
+		if (*grid == 4)
+			break ;
+		grid += increment;
 		i++;
 	}
-	return (fib[1]);
+	if (count == base)
+		return (1);
+	else
+		return (0);
 }
+
 /*
 int	main(int ac, char **av)
 {
+	int	grid[16] = {1,2,3,4,2,3,4,1,3,4,1,2,4,1,2,3};
 	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
+	{
+		printf("%d",look(4, &grid[0], 1));
+	}
 	return (0);
 }
 */

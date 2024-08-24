@@ -1,42 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/19 12:36:33 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/21 09:22:44 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
-#include <unistd.h>
+#include <unisrd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 */
-int	ft_fibonacci(int index)
-{
-	int	fib[3];
-	int	i;
 
-	fib[0] = 0;
-	fib[1] = 1;
+char	*ft_strstr(char *str, char *to_find)
+{
+	unsigned int	i;
+	unsigned int	y;
+
+	if (!*to_find)
+		return (str);
 	i = 0;
-	while (i < index - 2)
+	while (*(str + i))
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
+		y = 0;
+		while (*(str + i + y) == *(to_find + y) && *(to_find + y))
+		{
+			y++;
+		}
+		if (!*(to_find + y))
+			return (str + i);
 		i++;
 	}
-	return (fib[1]);
+	return (0);
 }
 /*
 int	main(int ac, char **av)
 {
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
+	char *result;
+	
+	ac = 2;
+	result = ft_strstr(av[1], av[2]);
+
+	if (result)
+		printf("%s", result);
+	else
+		printf("Pas trouvee\n");
 	return (0);
 }
 */

@@ -1,42 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/23 14:42:05 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/23 14:42:13 by bduval           ###   ########.fr       */
+/*   Created: 2024/08/19 11:44:26 by bduval            #+#    #+#             */
+/*   Updated: 2024/08/19 12:33:04 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
-#include <unistd.h>
+#include <unisrd.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 */
-int	ft_fibonacci(int index)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int	fib[3];
-	int	i;
+	unsigned int	i;
+	unsigned int	y;
 
-	fib[0] = 0;
-	fib[1] = 1;
 	i = 0;
-	while (i < index - 2)
+	while (*(dest + i))
 	{
-		fib[2] = fib[1];
-		fib[1] = fib[0] + fib[1];
-		fib[0] = fib[2];
 		i++;
 	}
-	return (fib[1]);
+	y = 0;
+	while (*(src + y) && (y < nb))
+	{
+		dest[i] = src[y];
+		i++;
+		y++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
 /*
 int	main(int ac, char **av)
 {
-	if (ac >= 1)
-		printf("%d",ft_fibonacci(atoi(av[1])));
+	char tab[20]= "BIEEEEN";
+
+	if (ac > 1)
+		ft_strncat(tab, av[1], atoi(av[2]));
+	printf("%s", tab);
 	return (0);
 }
 */
