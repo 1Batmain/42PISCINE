@@ -1,0 +1,77 @@
+/*
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+*/
+char	*ft_get_spaces(char *str)
+{
+
+	while (*str == ' ' || *str == '\f' || *str == '\n'
+		|| *str == '\r' || *str == '\t' || *str == '\v')
+		str++;
+	return (str);
+}
+
+char	*ft_get_signs(char *str, int *sign)
+{
+	while (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			*sign *= -1;
+		str++;
+	}
+	return (str);
+}
+
+/*get_index retourne 0 si la base n'est pas valide, -1 si le charactere n'est
+pas dans le base et l'index du charactere dans la base sinon*/
+
+int	ft_get_index(char c, const char *base)
+{
+	unsigned int	i;
+	unsigned int	y;
+
+	if (ft_len(base) <= 1)
+		return (0);
+	i = 0;
+	while (*(base + i))
+	{
+		y = i + 1;
+		while (*(base + y))
+		{
+			if (*(base + i) == *(base + y))
+				return (0);
+		y++;
+		}
+		if (*(base + i) == '+' || *(base + i) == '-')
+			return (0);
+		if (*(base + i) == c)
+			return (i);
+		i++;
+	}
+	i = 0;
+		return (-1);
+}
+int	ft_get_int_from_base(char *str, char *base)
+{
+	
+}
+int	ft_atoi_base(char *str, char *	signbase)
+{
+	int	sign;
+
+	sign = 1;
+	str = ft_get_spaces(str);
+	str = ft_get_signs(str, &sign);
+
+	return(sign * ft_get_int_from_base(str, *base))
+
+}
+int	main(int ac, char **av)
+{
+
+	return (0);
+}
+*/
+
