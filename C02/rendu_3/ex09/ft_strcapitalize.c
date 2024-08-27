@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 16:55:33 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/19 17:19:50 by bduval           ###   ########.fr       */
+/*   Updated: 2024/08/27 17:19:13 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -41,10 +41,10 @@ char	*ft_strcapitalize(char *str)
 {
 	int	count;
 
-	if ((is_alpha_num(*str) == 1) && is_lowcase(*str))
-		*str -= 32;
 	count = 1;
-	while (*(str + count))
+	if (is_lowcase(*str))
+		*str -= 32;
+	while (str[count])
 	{
 		if (is_alpha_num(str[count]))
 		{
