@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 17:32:41 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/29 10:04:33 by bduval           ###   ########.fr       */
+/*   Updated: 2024/08/30 10:33:02 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -70,7 +70,6 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	ft_operate(size, strs, sep, result);
 	return (result);
 }
-/*
 #include <unistd.h>
 #include <limits.h>
 int	main(int ac, char **av)
@@ -84,4 +83,5 @@ int	main(int ac, char **av)
 	free(result);
 	return (0);
 }
+/*
 */

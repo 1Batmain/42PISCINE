@@ -6,10 +6,9 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 19:00:42 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/29 19:48:36 by bduval           ###   ########.fr       */
+/*   Updated: 2024/08/30 12:36:29 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-// TODO GERER LE CAS nbr = 0
 #include <stdlib.h>
 
 char	*ft_check_space_sign(char *str, int *sign);
@@ -91,11 +90,20 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	sign = 0;
 	i = 0;
 	if ((is_in_base_or_ok('x', base_from) == -1
-	|| is_in_base_or_ok('x', base_to) == -1))
+			|| is_in_base_or_ok('x', base_to) == -1))
 		return (NULL);
 	decim = ft_atoi_base(nbr, base_from);
 	sign = check_sign(&decim, &sign);
-	res_nbr = ft_putnbr_base(decim, base_to, &res_nbr, &i);
+	if (!decim)
+	{
+		res_nbr = (char *)malloc(2 * sizeof(char));
+		if (!res_nbr)
+			return (NULL);
+		res_nbr[0] = base_to[0];
+		res_nbr[1] = '\0';
+	}
+	else
+		res_nbr = ft_putnbr_base(decim, base_to, &res_nbr, &i);
 	if (sign)
 		res_nbr = ft_add_sign(res_nbr);
 	return (res_nbr);

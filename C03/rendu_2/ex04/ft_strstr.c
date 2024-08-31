@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:36:33 by bduval            #+#    #+#             */
-/*   Updated: 2024/08/21 09:22:44 by bduval           ###   ########.fr       */
+/*   Updated: 2024/08/31 20:12:18 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 /*
@@ -14,6 +14,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 */
+void putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	write(1, str, i);
+}
 
 char	*ft_strstr(char *str, char *to_find)
 {
@@ -36,18 +47,14 @@ char	*ft_strstr(char *str, char *to_find)
 	}
 	return (0);
 }
-/*
 int	main(int ac, char **av)
 {
-	char *result;
+//	char *result;
 	
-	ac = 2;
-	result = ft_strstr(av[1], av[2]);
+//	result = ft_strstr(av[1], av[2]);
 
-	if (result)
-		printf("%s", result);
-	else
-		printf("Pas trouvee\n");
+	putstr(ft_strstr(av[1], av[2]));
 	return (0);
 }
+/*
 */
