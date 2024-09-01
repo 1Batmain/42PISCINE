@@ -53,19 +53,3 @@ void	ft_putstr(char *str)
 		a++;
 	}
 }
-
-int	ft_arraylen(char *str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i] != '\0')
-	{
-		if (i % 3 == 0)
-			count++;
-		i++;
-	}
-	return (count);
-}

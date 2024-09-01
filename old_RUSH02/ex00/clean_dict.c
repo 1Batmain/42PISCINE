@@ -6,10 +6,9 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 17:09:33 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/01 14:31:04 by bduval           ###   ########.fr       */
+/*   Updated: 2024/08/31 17:10:25 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 int	is_printable(char c)
 {
 	if (c > ' ' && c <= '~')
@@ -91,3 +90,25 @@ void	ft_clean_dict(char **tab)
 	}
 	return ;
 }
+/*
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+int	main(int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	if (ac >= 1)
+	{
+		ft_clean_dict(av);
+		while (av[i])
+		{
+			printf("%s\n", av[i]);
+			i++;
+		}
+	}
+	return (0);
+}
+*/

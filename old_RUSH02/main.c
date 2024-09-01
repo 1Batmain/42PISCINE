@@ -6,9 +6,10 @@
 /*   By: mseverin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:36:15 by mseverin          #+#    #+#             */
-/*   Updated: 2024/09/01 19:08:34 by bduval           ###   ########.fr       */
+/*   Updated: 2024/09/01 18:17:16 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "ft_helper.h"
@@ -40,6 +41,7 @@ int	check_argument(char *arg)
 	return (0);
 }
 
+
 char	*choice_argument(int argc, char **argv, char ***dictionnaire)
 {
 	char	*argument;
@@ -47,17 +49,24 @@ char	*choice_argument(int argc, char **argv, char ***dictionnaire)
 	if (argc == 2)
 	{
 		*dictionnaire = init_dict("./numbers.dict");
+		if (!*dictionnaire)
+		{
+			ft_free(*dictionnaire);
+			write(2, "Error\n", 6);
+			return (0);
+		}
 		argument = clean_arg(argv[1]);
 	}
 	else if (argc == 3)
 	{
 		*dictionnaire = init_dict(argv[1]);
 		argument = clean_arg(argv[2]);
-		if (!*dictionnaire)
-			return (NULL);
 	}
 	else
+	{
+		write(2, "Error\n", 6);
 		return (NULL);
+	}
 	return (argument);
 }
 
@@ -67,12 +76,7 @@ int	main(int argc, char **argv)
 	char	**dictionnaire;
 
 	argument = choice_argument(argc, argv, &dictionnaire);
-	if (!argument || !dictionnaire)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
-	if (!check_argument(argument))
+	if (!argument || !check_argument(argument) || !dictionnaire)
 	{
 		write(2, "Error\n", 6);
 		ft_free(dictionnaire);
