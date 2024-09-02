@@ -6,7 +6,7 @@
 /*   By: achu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 18:50:50 by achu              #+#    #+#             */
-/*   Updated: 2024/09/01 15:53:51 by achu             ###   ########.fr       */
+/*   Updated: 2024/09/01 21:57:44 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 void	ft_clean_dict(char **tab);
 void	ft_digit(char *str, char **dictionnaire);
+void	ft_free(char **str);
 int		ft_arraylen(char *str);
 
 #endif

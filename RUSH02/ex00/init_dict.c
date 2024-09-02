@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 10:46:18 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/01 18:02:59 by bduval           ###   ########.fr       */
+/*   Updated: 2024/09/01 21:35:18 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <fcntl.h>
@@ -59,6 +59,7 @@ char	**init_dict(char *path)
 	full_size = read(fd, extract_dict, full_size);
 	close(fd);
 	dict = ft_split(extract_dict, ":\n");
+	free(extract_dict);
 	if (!dict)
 		return (NULL);
 	ft_clean_dict(dict);

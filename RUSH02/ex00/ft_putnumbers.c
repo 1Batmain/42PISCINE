@@ -6,7 +6,7 @@
 /*   By: mseverin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/31 15:46:45 by mseverin          #+#    #+#             */
-/*   Updated: 2024/09/01 17:59:05 by achu             ###   ########.fr       */
+/*   Updated: 2024/09/01 21:25:38 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,6 @@ void	choice(char *str, char **dictionnaire)
 		write_two(res, dictionnaire);
 	else if (size == 3)
 		write_three(res, dictionnaire);
+	free(str);
+	free(res);
 }

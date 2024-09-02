@@ -6,7 +6,7 @@
 /*   By: achu <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 13:30:03 by achu              #+#    #+#             */
-/*   Updated: 2024/08/30 21:08:04 by achu             ###   ########.fr       */
+/*   Updated: 2024/09/01 21:34:02 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_end(char **split, char *temp, char *str, int i)
 	if (temp)
 		split[i] = ft_alloc(temp, str);
 	split[++i] = 0;
+	free(temp);
 }
 
 char	**ft_split(char *str, char *charset)
