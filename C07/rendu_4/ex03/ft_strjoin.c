@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str_join.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 17:32:41 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/03 14:45:41 by bduval           ###   ########.fr       */
+/*   Updated: 2024/09/03 21:06:10 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -71,8 +71,9 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	ft_operate(size, strs, sep, result);
 	return (result);
 }
+/*
 #include <unistd.h>
-#include <limits.h>
+#include <stdio.h>
 int	main(int ac, char **av)
 {
 	char	*result;
@@ -80,11 +81,10 @@ int	main(int ac, char **av)
 	result = NULL;
 	if (ac >= 2)
 	{
-	result =  ft_strjoin(ac, av, "-//-");
+	result =  ft_strjoin(ac, av, "<<SEPARATOR>>");
 		printf("%s", result);
 	}
 	free(result);
 	return (0);
 }
-/*
 */

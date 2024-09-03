@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_from_start.c                                 :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 20:14:20 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/01 20:15:19 by bduval           ###   ########.fr       */
+/*   Updated: 2024/09/03 22:48:01 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -34,6 +34,8 @@ int	ft_count_chains(char *str, char *charset)
 	i = 0;
 	count = 0;
 	chain_tem = 0;
+	if (!*charset && *str)
+		return (1);
 	while (str[i])
 	{
 		while (!ft_is_charset(str[i], charset))
@@ -49,7 +51,7 @@ int	ft_count_chains(char *str, char *charset)
 			count++;
 	}
 	return (count);
-}	
+}
 
 int	ft_len_str(char *str, char *charset)
 {
@@ -63,32 +65,47 @@ int	ft_len_str(char *str, char *charset)
 	return (i);
 }
 
-char	**ft_split(char *str, char*charset)
+char	**operate(char *str, char *charset, int str_count, char **res)
 {
-	char	**res;
-	int		str_count;
 	int		i;
 	int		j;
 	int		len;
 
 	i = 0;
+	while (i < str_count)
+	{
+		len = ft_len_str(str, charset);
+		if (len)
+		{
+			res[i] = (char *)malloc(sizeof(char) * (len + 1));
+			if (!res[i])
+				return (NULL);
+			j = 0;
+			while (j < len)
+				res[i][j++] = *(str++);
+			res[i++][j] = '\0';
+			while (ft_is_charset(*str, charset))
+				str++;
+		}
+		else
+			str++;
+	}
+	res[str_count] = NULL;
+	return (res);
+}
+
+char	**ft_split(char *str, char*charset)
+{
+	char	**res;
+	int		str_count;
+
 	str_count = ft_count_chains(str, charset);
 	res = (char **)malloc(sizeof (char *) * (str_count + 1));
 	if (!res)
 		return (NULL);
-	while (i < str_count)
-	{
-		len = ft_len_str(str, charset);
-		res[i] = (char *)malloc(sizeof(char) * (len + 1));
-		if (!res[i])
-			return (NULL);
-		j = 0;
-		while (j < len)
-			res[i][j++] = *(str++);
-		while (ft_is_charset(*str, charset))
-			str++;
-		i++;
-	}
+	res = operate(str, charset, str_count, res);
+	if (!res)
+		return (NULL);
 	return (res);
 }
 /*
@@ -106,8 +123,11 @@ int	main(int ac, char **av)
 		res = ft_split(av[1], av[2]);
 		i = 0;
 		while (res[i])
-			printf("%p --> %s\n", res[i], res[i++]);
-		printf("%p --> %s\n", res[i], res[i++]);
+		{
+			printf("%p --> %s\n", res[i], res[i]);
+			i++;
+		}
+		printf("%p --> %s\n", res[i], res[i]);
 	}
 	return (0);
 }

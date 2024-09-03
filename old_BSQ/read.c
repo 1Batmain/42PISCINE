@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:17:39 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/03 20:21:21 by rarangur         ###   ########.fr       */
+/*   Updated: 2024/09/03 18:48:28 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
@@ -35,7 +35,6 @@ t_pool	extract_map_from_file(int file_descriptor, t_pool p)
 	if (!raw_grid)
 		return (null_pool());
 	p.grid = ft_split(raw_grid, "\n");
-	free(raw_grid);
 	if (!p.grid)
 		return (null_pool());
 	return (p);

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paint.c                                            :+:      :+:    :+:   */
+/*   is_solution.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 19:58:18 by rarangur          #+#    #+#             */
-/*   Updated: 2024/09/03 17:25:56 by rarangur         ###   ########.fr       */
+/*   Created: 2024/09/02 18:19:01 by rarangur          #+#    #+#             */
+/*   Updated: 2024/09/02 19:01:44 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "structs.h"
 
-void	paint(t_square s, t_pool p)
+int	is_solution(t_square s, t_pool p)
 {
 	int	x;
 	int	y;
 
-	x = s.x1;
-	while (x < s.x2)
+	y = s.y1;
+	while (y < s.y2)
 	{
-		y = s.y1;
-		while (y < s.y2)
+		x = s.x1;
+		while (x < s.x2)
 		{
-			p.grid[y][x] = p.fill;
-			y++;
+			if (p.grid[y][x] == p.obstacle)
+				return (0);
+			x++;
 		}
-		x++;
+		y++;
 	}
+	return (1);
 }

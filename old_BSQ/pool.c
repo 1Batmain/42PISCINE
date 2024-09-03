@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paint.c                                            :+:      :+:    :+:   */
+/*   pool      .c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 19:58:18 by rarangur          #+#    #+#             */
-/*   Updated: 2024/09/03 17:25:56 by rarangur         ###   ########.fr       */
+/*   Created: 2024/09/02 16:42:06 by rarangur          #+#    #+#             */
+/*   Updated: 2024/09/02 16:42:16 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "structs.h"
 
-void	paint(t_square s, t_pool p)
+t_pool	null_pool(void)
 {
-	int	x;
-	int	y;
+	t_pool	null;
 
-	x = s.x1;
-	while (x < s.x2)
+	null.rows = 0;
+	null.grid = NULL;
+	return (null);
+}
+
+int	is_null_pool(t_pool p)
+{
+	return (p.rows == 0);
+}
+
+void	free_pool(t_pool p)
+{
+	int	i;
+
+	i = 0;
+	while (i < p.rows)
 	{
-		y = s.y1;
-		while (y < s.y2)
-		{
-			p.grid[y][x] = p.fill;
-			y++;
-		}
-		x++;
+		free(p.grid[i]);
+		i++;
 	}
+	free(p.grid);
 }

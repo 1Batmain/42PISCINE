@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   paint.c                                            :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 19:58:18 by rarangur          #+#    #+#             */
-/*   Updated: 2024/09/03 17:25:56 by rarangur         ###   ########.fr       */
+/*   Created: 2024/09/02 17:01:43 by rarangur          #+#    #+#             */
+/*   Updated: 2024/09/02 17:01:53 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "structs.h"
+#ifndef STRUCTS_H
 
-void	paint(t_square s, t_pool p)
+# define STRUCTS_H
+
+typedef struct Square
 {
-	int	x;
-	int	y;
+	int	x1;
+	int	x2;
+	int	y1;
+	int	y2;
+}	t_square;
 
-	x = s.x1;
-	while (x < s.x2)
-	{
-		y = s.y1;
-		while (y < s.y2)
-		{
-			p.grid[y][x] = p.fill;
-			y++;
-		}
-		x++;
-	}
-}
+typedef struct Pool {
+	int		rows;
+	int		cols;
+	char	empty;
+	char	obstacle;
+	char	fill;
+	char	**grid;
+}	t_pool;
+
+#endif
