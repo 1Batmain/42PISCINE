@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 17:32:41 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/03 21:06:10 by bduval           ###   ########.fr       */
+/*   Updated: 2024/09/04 09:56:00 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 	char	*result;
 
 	result = NULL;
-	if (ac >= 2)
+	if (ac >= 1)
 	{
 	result =  ft_strjoin(ac, av, "<<SEPARATOR>>");
 		printf("%s", result);

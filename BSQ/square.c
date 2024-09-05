@@ -6,7 +6,7 @@
 /*   By: rarangur <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:50:59 by rarangur          #+#    #+#             */
-/*   Updated: 2024/09/03 18:46:10 by rarangur         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:02:57 by rarangur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,16 @@ t_square	null_square(void)
 {
 	t_square	null;
 
+	null.x1 = 0;
+	null.y1 = 0;
 	null.x2 = 0;
+	null.y2 = 0;
 	return (null);
 }
 
 int	is_null_square(t_square s)
 {
 	return (s.x2 == 0);
-}
-
-t_square	first_square(t_pool p)
-{
-	t_square	s;
-	int			min;
-
-	if (p.rows < p.cols)
-		min = p.rows;
-	else
-		min = p.cols;
-	s.x1 = 0;
-	s.y1 = 0;
-	s.x2 = min;
-	s.y2 = min;
-	return (s);
 }
 
 t_square	next_square(t_square s, t_pool p)
@@ -61,12 +48,16 @@ t_square	next_square(t_square s, t_pool p)
 		s.y2++;
 		return (s);
 	}
-	size--;
-	if (size == 0)
+	return (null_square());
+}
+
+t_square	grow_square(t_square s, t_pool p)
+{
+	s.x2++;
+	s.y2++;
+	if (s.y2 > p.rows)
 		return (null_square());
-	s.y2 = size;
-	s.x2 = size;
-	s.x1 = 0;
-	s.y1 = 0;
-	return (s);
+	if (s.x2 <= p.cols)
+		return (s);
+	return (next_square(s, p));
 }

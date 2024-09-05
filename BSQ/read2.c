@@ -6,7 +6,7 @@
 /*   By: bduval <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 16:49:15 by bduval            #+#    #+#             */
-/*   Updated: 2024/09/03 20:20:03 by rarangur         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:39:53 by bduval           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "structs.h"
@@ -115,22 +115,22 @@ char	*ft_add_in_str(char *str, char *buff, int len)
 
 char	*read_raw(int file_descriptor)
 {
-	char	buff[101];
+	char	buff[1001];
 	char	*raw_grid;
 	char	*tmp;
 	int		read_res;
 	int		len;
 
-	buff[100] = '\0';
+	buff[1000] = '\0';
 	raw_grid = malloc(1);
 	if (!raw_grid)
 		return (NULL);
 	*raw_grid = '\0';
 	len = 0;
-	read_res = 100;
-	while (read_res == 100)
+	read_res = 1000;
+	while (read_res == 1000)
 	{
-		read_res = read(file_descriptor, buff, 100);
+		read_res = read(file_descriptor, buff, 1000);
 		len += read_res;
 		tmp = ft_add_in_str(raw_grid, buff, len);
 		free(raw_grid);
